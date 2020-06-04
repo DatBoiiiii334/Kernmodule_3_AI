@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class Idle_State : State
 {
-    public float Timer = 1f;
-    //private float ActualSpeed;
-    //private int NewSpeed = 0;
+    private float LocalIdleTime;
 
     public override void OnEnter(Base_Ghost ghost)
     {
         Debug.Log("Idle");
-        //ActualSpeed = ghost.speed;
+        LocalIdleTime = ghost.IdleTime;
+        ghost.KillPlayer = false;
     }
 
     public override void OnExit(Base_Ghost ghost)
     {
-        //ghost.speed = ActualSpeed;
         ghost.NewRoute();
+        ghost.KillPlayer = true;
     }
 
     public override void OnUpdate(Base_Ghost ghost)
     {
-        //ghost.speed = NewSpeed;
+        LocalIdleTime -= Time.deltaTime;
+
         PathRequestManager.RequestPath(ghost.transform.position, ghost.transform.position, ghost.OnPathFound);
 
-        Timer -= 0.2f * Time.deltaTime;
-        if(Timer <= 0) {
+        if(LocalIdleTime <= 0) {
             ghost.ChangeState("Patrol");
         }
     }

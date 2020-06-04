@@ -10,6 +10,10 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
     public GameObject player, spawn, target;
     public State myState;
     public int myHealth;
+    public float RageTime { get; set; }
+    public float IdleTime { get; set; }
+    public float FleeTime { get; set; }
+
     public bool KillGhost;
     public bool KillPlayer;
     public bool RescueGhost;
@@ -20,7 +24,6 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
 
     protected virtual void Update()
     {
-
         if (myState != null) {
             myState.OnUpdate(this);
         }
@@ -36,37 +39,38 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
             NewRoute();
         }
     }
-
-    protected void OnTriggerEnter(Collider other)
+     
+    void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Targetable") {
-            other.GetComponent<Idamagable>().GiveDamage(1);
-            other.GetComponent<Iconsumable>().Eat(true);
-        }
-
         if (other.gameObject == target) {
-            Debug.Log("Found him");
             NewRoute();
         }
+    }
 
-        if (other.gameObject == spawn) {
+    protected void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Targetable") {
+            collision.collider.GetComponent<Idamagable>().GiveDamage(1);
+            collision.collider.GetComponent<Iconsumable>().Eat(true);
+        }
+
+        if (collision.collider.gameObject == spawn) {
             InFleeZone = true;
         }
 
         if (KillPlayer == true) {
-            if (other.tag == "Player") {
-                Debug.Log("Hit player");
-                other.GetComponent<Idamagable>().GiveDamage(1);
+            if (collision.collider.tag == "Player") {
+                collision.collider.GetComponent<Idamagable>().GiveDamage(1);
             }
         }
 
-        if (other.tag == "Ghost") {
+        if (collision.collider.tag == "Ghost") {
             Debug.Log("Boo");
             if (KillGhost == true) {
-                other.GetComponent<Idamagable>().GiveDamage(1);
+                collision.collider.GetComponent<Idamagable>().GiveDamage(1);
             }
             else {
-                other.GetComponent<IRescueAble>().Rescue(true);
+                collision.collider.GetComponent<IRescueAble>().Rescue(true);
             }
         }
     }
@@ -95,6 +99,7 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
     public void GiveDamage(int damage)
     {
         if (KillPlayer == false) {
+            Debug.Log(name + "Has been hit");
             myHealth = myHealth - damage;
         }
     }

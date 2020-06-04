@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RageFruit : MonoBehaviour 
+public class RageFruit : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        collision.collider.GetComponent<IRageble>().Rage(true);
-        transform.gameObject.SetActive(false);
+        if (collision.collider.tag == "Player" || collision.collider.tag == "Ghost") {
+            collision.collider.GetComponent<IRageble>().Rage(true);
+            transform.gameObject.SetActive(false);
+        }
     }
 }

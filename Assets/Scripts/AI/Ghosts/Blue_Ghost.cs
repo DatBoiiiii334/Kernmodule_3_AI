@@ -8,6 +8,9 @@ public class Blue_Ghost : Base_Ghost
     {
         myHealth = 1;
         speed = 3;
+        RageTime = 4;
+        IdleTime = 10;
+        FleeTime = 4;
 
         myStateDictionary.Add("Patrol", new Patrol_State());
         myStateDictionary.Add("Flee", new Flee_State());

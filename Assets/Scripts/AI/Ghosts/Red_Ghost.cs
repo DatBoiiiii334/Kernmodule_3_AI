@@ -8,8 +8,9 @@ public class Red_Ghost : Base_Ghost
     {
         myHealth = 1;
         speed = 5;
-
-        KillPlayer = true;
+        RageTime = 10;
+        IdleTime = 10;
+        FleeTime = 4;
 
         myStateDictionary.Add("Patrol", new Patrol_State());
         myStateDictionary.Add("Flee", new Flee_State());
@@ -21,6 +22,4 @@ public class Red_Ghost : Base_Ghost
             myState.OnEnter(this);
         }
     }
-
-    
 }

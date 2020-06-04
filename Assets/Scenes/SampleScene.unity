@@ -1119,13 +1119,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1064700675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ec0e6057229664cb678ad88526e535, type: 3}
+  m_Script: {fileID: 11500000, guid: 06d525ae8aaff244490f2803c0802801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRb: {fileID: 0}
   speed: 8
-  HP: 0
-  CanKill: 0
-  CanKillTimer: 2
+  HP: 2
+  RageTime: 5
 --- !u!54 &1064700681
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1253,7 +1253,7 @@ PrefabInstance:
     - target: {fileID: 3607675250137836133, guid: c36a073cbcef0b54b99a9b61e0978cd3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 3607675250137836133, guid: c36a073cbcef0b54b99a9b61e0978cd3,
         type: 3}
@@ -1298,6 +1298,11 @@ PrefabInstance:
     - target: {fileID: 3607675250137836133, guid: c36a073cbcef0b54b99a9b61e0978cd3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607675250137836128, guid: c36a073cbcef0b54b99a9b61e0978cd3,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2183,6 +2188,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2689893242033104674, guid: de5d569e53147c346804b43701edf34a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5081042862124470481, guid: de5d569e53147c346804b43701edf34a,
         type: 3}
       propertyPath: ground
@@ -2198,6 +2208,11 @@ PrefabInstance:
       propertyPath: spawn
       value: 
       objectReference: {fileID: 989260071}
+    - target: {fileID: 5081042862124470481, guid: de5d569e53147c346804b43701edf34a,
+        type: 3}
+      propertyPath: KillPlayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5d569e53147c346804b43701edf34a, type: 3}
 --- !u!1001 &6014622716459610169
@@ -2267,6 +2282,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6014622714767137008, guid: 342e08a391b97e04280e70ad95831a1f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6014622714767137022, guid: 342e08a391b97e04280e70ad95831a1f,
         type: 3}
       propertyPath: ground
@@ -2286,6 +2306,16 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014622714767137022, guid: 342e08a391b97e04280e70ad95831a1f,
+        type: 3}
+      propertyPath: KillPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014622714767137022, guid: 342e08a391b97e04280e70ad95831a1f,
+        type: 3}
+      propertyPath: RescueGhost
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 342e08a391b97e04280e70ad95831a1f, type: 3}
