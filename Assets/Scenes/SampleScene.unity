@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0e7c69d3eea818f44a263957c4eb83b1,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1305,6 +1306,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3607675250137836135, guid: c36a073cbcef0b54b99a9b61e0978cd3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25f9193108685df4e926fba0cb6b2e86, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c36a073cbcef0b54b99a9b61e0978cd3, type: 3}
 --- !u!1 &1284382622
@@ -1470,6 +1476,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3607675250137836135, guid: c36a073cbcef0b54b99a9b61e0978cd3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25f9193108685df4e926fba0cb6b2e86, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c36a073cbcef0b54b99a9b61e0978cd3, type: 3}
 --- !u!1 &1415017985
@@ -2213,6 +2224,11 @@ PrefabInstance:
       propertyPath: KillPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5081042862124470481, guid: de5d569e53147c346804b43701edf34a,
+        type: 3}
+      propertyPath: myMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 847450446571dba46b894ad03159679c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5d569e53147c346804b43701edf34a, type: 3}
 --- !u!1001 &6014622716459610169
@@ -2317,5 +2333,10 @@ PrefabInstance:
       propertyPath: RescueGhost
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6014622714767137022, guid: 342e08a391b97e04280e70ad95831a1f,
+        type: 3}
+      propertyPath: myMat
+      value: 
+      objectReference: {fileID: 2100000, guid: ea31a4577ffe41c40817e7236e268413, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 342e08a391b97e04280e70ad95831a1f, type: 3}

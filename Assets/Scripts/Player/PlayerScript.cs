@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : PlayerMovement, Idamagable, IRageble
 {
     private float OldRageTime;
-    private bool startRage;
+    private bool IsInRage;
 
     public int HP;
     public float RageTime;
@@ -18,18 +18,14 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
 
     void Update()
     {
-        if (startRage == true) {
+        if (IsInRage == true) {
             RageTime -= Time.deltaTime;
         }
 
         if (RageTime <= 0) {
-            startRage = false;
+            IsInRage = false;
             RageTime = OldRageTime;
         }
-
-        //if(HP <= 0) {
-
-        //}
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,6 +44,6 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
 
     public void Rage(bool startRaging)
     {
-        startRage = startRaging;
+        IsInRage = startRaging;
     }
 }

@@ -8,7 +8,7 @@ public class Blue_Ghost : Base_Ghost
     {
         myHealth = 1;
         speed = 3;
-        RageTime = 4;
+        RageTime = 10;
         IdleTime = 10;
         FleeTime = 4;
 

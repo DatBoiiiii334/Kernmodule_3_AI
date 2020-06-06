@@ -136,15 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ground: {fileID: 0}
-  speed: 0
   player: {fileID: 0}
   spawn: {fileID: 0}
   target: {fileID: 566890326215603030}
+  myMat: {fileID: 2100000, guid: ea31a4577ffe41c40817e7236e268413, type: 2}
   myHealth: 1
-  KillGhost: 0
-  KillPlayer: 0
-  RescueGhost: 1
-  GotRescuedGhost: 0
 --- !u!1 &6014622716717839025
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,22 +180,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6014622716717839024}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6099497607705739272, guid: bca551c0e2cabd54a912b644bfe126f1,
         type: 3}
       propertyPath: m_Name
@@ -271,25 +251,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3549397255970146264, guid: bca551c0e2cabd54a912b644bfe126f1,
+        type: 3}
+      propertyPath: TagName
+      value: wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6099497607705739277, guid: bca551c0e2cabd54a912b644bfe126f1,
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099497607705739277, guid: bca551c0e2cabd54a912b644bfe126f1,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3097c2284aa4fdf4e821ea6a25291d27, type: 2}
-    - target: {fileID: 6099497607705739278, guid: bca551c0e2cabd54a912b644bfe126f1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099497607705739278, guid: bca551c0e2cabd54a912b644bfe126f1,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6099497607705739278, guid: bca551c0e2cabd54a912b644bfe126f1,
         type: 3}
@@ -300,11 +270,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3549397255970146264, guid: bca551c0e2cabd54a912b644bfe126f1,
-        type: 3}
-      propertyPath: TagName
-      value: wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bca551c0e2cabd54a912b644bfe126f1, type: 3}

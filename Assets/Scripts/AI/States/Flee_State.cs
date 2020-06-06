@@ -10,28 +10,33 @@ public class Flee_State : State
     {
         Debug.Log("Flee");
         localFleeTime = ghost.FleeTime;
+
     }
 
     public override void OnExit(Base_Ghost ghost)
     {
-        ghost.RescueGhost = false;
+        localFleeTime = ghost.FleeTime;
+        ghost.myHealth = 1;
+        ghost.GotRescuedGhost = false;
+        ghost.InFleeZone = false;
     }
 
     public override void OnUpdate(Base_Ghost ghost)
     {
         PathRequestManager.RequestPath(ghost.transform.position, ghost.spawn.transform.position, ghost.OnPathFound);
 
+        ghost.myMat.SetColor("_Color", Color.green);
+
         if (ghost.GotRescuedGhost == true) {
             ghost.ChangeState("Patrol");
         }
-        else {
-            if (ghost.InFleeZone == true) {
-                localFleeTime -= Time.deltaTime;
-            }
 
-            if (localFleeTime <= 0) {
-                ghost.ChangeState("Patrol");
-            }
-        } 
+        if (ghost.InFleeZone == true) {
+            localFleeTime -= Time.deltaTime;
+        }
+
+        if (localFleeTime <= 0) {
+            ghost.ChangeState("Patrol");
+        }
     }
 }

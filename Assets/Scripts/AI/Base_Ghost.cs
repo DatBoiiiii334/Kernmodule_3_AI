@@ -8,30 +8,39 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
     private Vector3 NewPos;
 
     public GameObject player, spawn, target;
+
+    public Material myMat;
+
     public State myState;
     public int myHealth;
+
     public float RageTime { get; set; }
     public float IdleTime { get; set; }
     public float FleeTime { get; set; }
 
-    public bool KillGhost;
-    public bool KillPlayer;
-    public bool RescueGhost;
-    public bool GotRescuedGhost;
-    public bool InFleeZone;
+    public bool KillGhost { get; set; }
+    public bool KillPlayer { get; set; }
+    public bool RescueGhost { get; set; }
+    public bool GotRescuedGhost { get; set; }
+    public bool InFleeZone { get; set; }
 
     protected Dictionary<string, State> myStateDictionary = new Dictionary<string, State>();
 
-    protected virtual void Update()
+    void Start()
+    {
+        Check();
+        
+    }
+
+    void Update()
     {
         if (myState != null) {
             myState.OnUpdate(this);
         }
 
         if (myHealth <= 0) {
-            Debug.Log("I HAVE BEEN HIT");
+            Debug.Log(name + " Is DEAD");
             ChangeState("Flee");
-            myHealth = 1;
         }
 
         //If the Waypoint of the ghost has turned it's self false then call on the NewRoute function
@@ -39,11 +48,15 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
             NewRoute();
         }
     }
-     
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == target) {
             NewRoute();
+        }
+
+        if (other.gameObject == spawn) {
+            InFleeZone = true;
         }
     }
 
@@ -54,9 +67,7 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
             collision.collider.GetComponent<Iconsumable>().Eat(true);
         }
 
-        if (collision.collider.gameObject == spawn) {
-            InFleeZone = true;
-        }
+        
 
         if (KillPlayer == true) {
             if (collision.collider.tag == "Player") {
@@ -69,7 +80,7 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
             if (KillGhost == true) {
                 collision.collider.GetComponent<Idamagable>().GiveDamage(1);
             }
-            else {
+            if(RescueGhost == true) {
                 collision.collider.GetComponent<IRescueAble>().Rescue(true);
             }
         }
@@ -100,7 +111,7 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
     {
         if (KillPlayer == false) {
             Debug.Log(name + "Has been hit");
-            myHealth = myHealth - damage;
+            myHealth -= damage;
         }
     }
 

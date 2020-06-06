@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour
         groundSize = ground.GetComponent<Renderer>();
     }
 
-    void Start()
+    protected void Check()
     {
         if (myRigidbody == null) {
             Debug.LogError("PLEASE ADD RIGIDBODY COMPONENT TO UNIT !!!!");

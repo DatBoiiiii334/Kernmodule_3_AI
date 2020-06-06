@@ -10,13 +10,17 @@ public class Rage_State : State
     {
         Debug.Log("Rage");
         LocalRageTime = ghost.RageTime;
-        ghost.KillPlayer = true;
+        ghost.KillGhost = true;
     }
 
-    public override void OnExit(Base_Ghost ghost) { ghost.KillPlayer = false; }
+    public override void OnExit(Base_Ghost ghost)
+    {
+        ghost.KillGhost = false;
+    }
 
     public override void OnUpdate(Base_Ghost ghost)
     {
+        ghost.myMat.SetColor("_Color", Color.red);
         LocalRageTime -= Time.deltaTime;
 
         if (ghost.transform.position != ghost.player.transform.position) {

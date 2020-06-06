@@ -11,6 +11,7 @@ public class Idle_State : State
         Debug.Log("Idle");
         LocalIdleTime = ghost.IdleTime;
         ghost.KillPlayer = false;
+        
     }
 
     public override void OnExit(Base_Ghost ghost)
@@ -22,7 +23,7 @@ public class Idle_State : State
     public override void OnUpdate(Base_Ghost ghost)
     {
         LocalIdleTime -= Time.deltaTime;
-
+        ghost.myMat.SetColor("_Color", Color.yellow);
         PathRequestManager.RequestPath(ghost.transform.position, ghost.transform.position, ghost.OnPathFound);
 
         if(LocalIdleTime <= 0) {
