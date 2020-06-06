@@ -29,7 +29,6 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
     void Start()
     {
         Check();
-        
     }
 
     void Update()
@@ -109,10 +108,8 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
 
     public void GiveDamage(int damage)
     {
-        if (KillPlayer == false) {
-            Debug.Log(name + "Has been hit");
-            myHealth -= damage;
-        }
+        Debug.Log(name + "Has been hit");
+        myHealth -= damage;
     }
 
     public void Rage(bool startRaging)

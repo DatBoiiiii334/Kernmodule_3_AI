@@ -1069,7 +1069,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 315346194a82e0942b6d6e5979b32c9a, type: 2}
+  - {fileID: 2100000, guid: 9d1b0338f806d664bac45aeaf6338170, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1125,6 +1125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRb: {fileID: 0}
   speed: 8
+  myShader: {fileID: 2100000, guid: 9d1b0338f806d664bac45aeaf6338170, type: 2}
   HP: 2
   RageTime: 5
 --- !u!54 &1064700681
@@ -2228,7 +2229,12 @@ PrefabInstance:
         type: 3}
       propertyPath: myMat
       value: 
-      objectReference: {fileID: 2100000, guid: 847450446571dba46b894ad03159679c, type: 2}
+      objectReference: {fileID: 2100000, guid: ea31a4577ffe41c40817e7236e268413, type: 2}
+    - target: {fileID: 2689893242033104677, guid: de5d569e53147c346804b43701edf34a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea31a4577ffe41c40817e7236e268413, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5d569e53147c346804b43701edf34a, type: 3}
 --- !u!1001 &6014622716459610169
@@ -2337,6 +2343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: myMat
       value: 
-      objectReference: {fileID: 2100000, guid: ea31a4577ffe41c40817e7236e268413, type: 2}
+      objectReference: {fileID: 2100000, guid: 47844422c9bcfe3459b880cd6d78e9cf, type: 2}
+    - target: {fileID: 6014622714767137011, guid: 342e08a391b97e04280e70ad95831a1f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47844422c9bcfe3459b880cd6d78e9cf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 342e08a391b97e04280e70ad95831a1f, type: 3}
