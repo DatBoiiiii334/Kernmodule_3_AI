@@ -15,7 +15,7 @@ public class Red_Ghost : Base_Ghost
         myStateDictionary.Add("Patrol", new Patrol_State());
         myStateDictionary.Add("Flee", new Flee_State());
         myStateDictionary.Add("Rage", new Rage_State());
-        myStateDictionary.Add("Idle", new Idle_State());
+        myStateDictionary.Add("Tagged", new Tagged_State());
         myState = myStateDictionary["Patrol"];
 
         if (myState != null) {

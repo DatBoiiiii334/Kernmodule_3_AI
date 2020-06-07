@@ -1,38 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Unit : MonoBehaviour
+public class Unit : SpawnAtRandom
 {
     private Rigidbody myRigidbody;
-    private Renderer groundSize;
-
     private Vector3[] path;
     private int targetIndex;
 
-    protected float minX, maxX, minZ, maxZ;
+    public float speed;
 
-    public GameObject ground;
-    protected float speed;
-
-    public void Awake()
+    protected void Unit_Check()
     {
         myRigidbody = GetComponent<Rigidbody>();
-        groundSize = ground.GetComponent<Renderer>();
-    }
 
-    protected void Check()
-    {
         if (myRigidbody == null) {
             Debug.LogError("PLEASE ADD RIGIDBODY COMPONENT TO UNIT !!!!");
         }
-        if (groundSize == null) {
-            Debug.LogError("PLEASE ADD RENDERER TO GROUND GAMEOBJECT !!!!");
-        }
-
-        minX = (groundSize.bounds.center.x - groundSize.bounds.extents.x);
-        maxX = (groundSize.bounds.center.x + groundSize.bounds.extents.x);
-        minZ = (groundSize.bounds.center.z - groundSize.bounds.extents.z);
-        maxZ = (groundSize.bounds.center.z + groundSize.bounds.extents.z);
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)

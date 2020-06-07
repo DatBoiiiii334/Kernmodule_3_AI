@@ -5,17 +5,20 @@ using UnityEngine;
 public class SpawnAtRandom : MonoBehaviour
 {
     private Renderer groundSize;
-    private float minX, maxX, minZ, maxZ;
-    private Vector3 NewPos;
+
+    protected Vector3 NewPos;
+    protected float minX, maxX, minZ, maxZ;
 
     public GameObject ground;
 
-    private void Start()
+    protected void SpawnAtRandom_Check()
     {
         groundSize = ground.GetComponent<Renderer>();
+
         if (groundSize == null) {
             Debug.LogError("NO RENDERER FOUND IN GHOST!!!!");
         }
+
         minX = (groundSize.bounds.center.x - groundSize.bounds.extents.x);
         maxX = (groundSize.bounds.center.x + groundSize.bounds.extents.x);
         minZ = (groundSize.bounds.center.z - groundSize.bounds.extents.z);

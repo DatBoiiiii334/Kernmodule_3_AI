@@ -1,12 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
 {
-    private Vector3 NewPos;
-
     public GameObject player, spawn, target;
 
     public Material myMat;
@@ -26,9 +23,10 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
 
     protected Dictionary<string, State> myStateDictionary = new Dictionary<string, State>();
 
-    void Start()
+    public void Start()
     {
-        Check();
+        SpawnAtRandom_Check();
+        Unit_Check();
     }
 
     void Update()
@@ -39,10 +37,9 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
 
         if (myHealth <= 0) {
             Debug.Log(name + " Is DEAD");
-            ChangeState("Flee");
+            ChangeState("Tagged");
         }
 
-        //If the Waypoint of the ghost has turned it's self false then call on the NewRoute function
         if (!target.activeInHierarchy) {
             NewRoute();
         }
@@ -65,8 +62,6 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
             collision.collider.GetComponent<Idamagable>().GiveDamage(1);
             collision.collider.GetComponent<Iconsumable>().Eat(true);
         }
-
-        
 
         if (KillPlayer == true) {
             if (collision.collider.tag == "Player") {

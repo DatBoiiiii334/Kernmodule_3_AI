@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Patrol_State : State
 {
+    private float EnemyDistance = 6f;
+
     public override void OnEnter(Base_Ghost ghost)
     {
         Debug.Log("Patrol");
@@ -18,13 +20,20 @@ public class Patrol_State : State
 
     public override void OnUpdate(Base_Ghost ghost)
     {
+        float distance = Vector3.Distance(ghost.transform.position, ghost.player.transform.position);
         ghost.KillPlayer = true; ghost.myMat.SetColor("_Color", Color.blue);
-        if (ghost.transform.position != ghost.player.transform.position) {
+
+        if (distance < EnemyDistance) {
+            Vector3 dirToPlayer = ghost.transform.position - ghost.player.transform.position;
+            Vector3 newPos = ghost.transform.position - dirToPlayer;
+            PathRequestManager.RequestPath(ghost.transform.position, ghost.player.transform.position, ghost.OnPathFound);
+        }
+        else {
             PathRequestManager.RequestPath(ghost.transform.position, ghost.target.transform.position, ghost.OnPathFound);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            ghost.ChangeState("Idle");
+            ghost.ChangeState("Rage");
         }
     }
 }

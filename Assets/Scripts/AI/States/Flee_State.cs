@@ -4,39 +4,44 @@ using UnityEngine;
 
 public class Flee_State : State
 {
-    private float localFleeTime;
+    private float LocalIdleTime;
+    private float LocalSpeed;
+    private float EnemyDistance = 4f;
 
     public override void OnEnter(Base_Ghost ghost)
     {
-        Debug.Log("Flee");
-        localFleeTime = ghost.FleeTime;
+        Debug.Log("Idle");
 
+        LocalIdleTime = ghost.IdleTime;
+        ghost.KillPlayer = false;
+        LocalSpeed = ghost.speed;
+        ghost.speed += 2;
     }
 
     public override void OnExit(Base_Ghost ghost)
     {
-        localFleeTime = ghost.FleeTime;
-        ghost.myHealth = 1;
-        ghost.GotRescuedGhost = false;
-        ghost.InFleeZone = false;
+        ghost.speed = LocalSpeed;
+        ghost.NewRoute();
+        ghost.KillPlayer = true;
     }
 
     public override void OnUpdate(Base_Ghost ghost)
     {
-        PathRequestManager.RequestPath(ghost.transform.position, ghost.spawn.transform.position, ghost.OnPathFound);
+        LocalIdleTime -= Time.deltaTime;
+        float distance = Vector3.Distance(ghost.transform.position, ghost.player.transform.position);
+        ghost.myMat.SetColor("_Color", Color.yellow);
 
-        ghost.myMat.SetColor("_Color", Color.green);
-
-        if (ghost.GotRescuedGhost == true) {
+        if (LocalIdleTime <= 0) {
             ghost.ChangeState("Patrol");
         }
 
-        if (ghost.InFleeZone == true) {
-            localFleeTime -= Time.deltaTime;
+        if (distance < EnemyDistance) {
+            Vector3 dirToPlayer = ghost.transform.position - ghost.player.transform.position;
+            Vector3 newPos = ghost.transform.position + dirToPlayer;
+            PathRequestManager.RequestPath(ghost.transform.position, dirToPlayer, ghost.OnPathFound);
         }
-
-        if (localFleeTime <= 0) {
-            ghost.ChangeState("Patrol");
+        else {
+            PathRequestManager.RequestPath(ghost.transform.position, ghost.transform.position, ghost.OnPathFound);
         }
     }
 }

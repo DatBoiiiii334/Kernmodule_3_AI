@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [HideInInspector]
-    public Rigidbody myRb;
+    protected Rigidbody myRb;
     public float speed;
+
+    protected void PlayerMovement_Check()
+    {
+        myRb = GetComponent<Rigidbody>();
+    }
 
     private void FixedUpdate()
     {

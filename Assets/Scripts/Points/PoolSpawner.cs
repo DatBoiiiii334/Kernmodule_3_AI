@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolSpawner : MonoBehaviour
+public class PoolSpawner : SpawnAtRandom
 {
-    public static PoolSpawner spawnerInstance;
+    private int currentAmountPoolObjects;
+    private int counter;
 
+    public static PoolSpawner spawnerInstance;
     public GameObject spawnableGameobject;
     public List<GameObject> pooledObjects;
     public int amountToSpawn;
     public bool shouldExpand = true;
-    public int currentAmountPoolObjects;
-    public int counter;
 
-    public  void Start()
+    public void Start()
     {
-        //amountPool = WaveManager.amountToSpawn;
-
+        SpawnAtRandom_Check();
         pooledObjects = new List<GameObject>();
 
         for (int i = 0; i < amountToSpawn; i++) {
@@ -53,16 +52,14 @@ public class PoolSpawner : MonoBehaviour
             SpawnDuckWave(amountToSpawn);
         }
 
-        if(counter == 0) {
+        if (counter == 0) {
             SpawnDuckWave(amountToSpawn);
         }
-        
     }
 
     public void CountDucksInScene()
     {
         counter = currentAmountPoolObjects;
-
         for (int i = 0; i < pooledObjects.Count; i++) {
             if (!pooledObjects[i].activeInHierarchy) {
                 if (counter > 0) {
@@ -78,10 +75,9 @@ public class PoolSpawner : MonoBehaviour
         for (int i = 0; i < amount; i++) {
             GameObject Duck = GetPooledObject();
             if (Duck != null) {
-                Duck.transform.position = transform.position;
-                Duck.transform.rotation = transform.rotation;
+                NewRoute(Duck);
                 Duck.SetActive(true);
             }
         }
-    } 
+    }
 }

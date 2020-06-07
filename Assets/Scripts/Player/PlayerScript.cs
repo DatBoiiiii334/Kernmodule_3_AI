@@ -1,36 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : PlayerMovement, Idamagable, IRageble
 {
     private float OldRageTime;
     private bool IsInRage;
+
     public Material myShader;
+    public Text ScoreText;
+    public Text LivesText;
 
     public int HP;
+    public int score;
     public float RageTime;
 
     private void Start()
     {
-        myRb = GetComponent<Rigidbody>();
+        PlayerMovement_Check();
         OldRageTime = RageTime;
         myShader.SetColor("_Color", Color.cyan);
     }
 
     void Update()
     {
+        ScoreText.text = "Score: " + score.ToString();
+        LivesText.text = "Lives: " + HP.ToString();
+
         if (IsInRage == true) {
             RageTime -= Time.deltaTime;
             myShader.SetColor("_Color", Color.red);
         }
         else {
-            myShader.SetColor("_Color", Color.cyan);
+            myShader.SetColor("_Color", Color.yellow);
         }
 
         if (RageTime <= 0) {
             IsInRage = false;
             RageTime = OldRageTime;
+        }
+
+        if (HP <= 0) {
+            SceneManager.LoadScene("LoseScreen");
+        }
+        else if (score >= 10) {
+            SceneManager.LoadScene("WinScreen");
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -50,7 +64,7 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
 
     void Idamagable.GiveDamage(int damage)
     {
-        if(IsInRage == false) {
+        if (IsInRage == false) {
             HP -= damage;
         }
     }
@@ -58,5 +72,6 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
     public void Rage(bool startRaging)
     {
         IsInRage = startRaging;
+        score = score + 1;
     }
 }
