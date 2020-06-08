@@ -71,7 +71,6 @@ public class PoolSpawner : SpawnAtRandom
 
     public void SpawnDuckWave(int amount)
     {
-        Debug.Log("Spawnerino");
         for (int i = 0; i < amount; i++) {
             GameObject Duck = GetPooledObject();
             if (Duck != null) {

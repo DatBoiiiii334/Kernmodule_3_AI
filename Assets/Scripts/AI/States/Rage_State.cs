@@ -11,16 +11,17 @@ public class Rage_State : State
 
     public override void OnEnter(Base_Ghost ghost)
     {
-        Debug.Log("Rage");
         LocalRageTime = ghost.RageTime;
         LocalSpeed = ghost.speed;
         RageSpeed = ghost.speed + 2f;
         ghost.KillGhost = true;
+        ghost.KillPlayer = true;
     }
 
     public override void OnExit(Base_Ghost ghost)
     {
         ghost.KillGhost = false;
+        ghost.KillPlayer = false;
         ghost.speed = LocalSpeed;
     }
 

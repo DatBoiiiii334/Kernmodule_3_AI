@@ -8,7 +8,6 @@ public class Patrol_State : State
 
     public override void OnEnter(Base_Ghost ghost)
     {
-        Debug.Log("Patrol");
         ghost.RescueGhost = true;
     }
 
@@ -30,10 +29,6 @@ public class Patrol_State : State
         }
         else {
             PathRequestManager.RequestPath(ghost.transform.position, ghost.target.transform.position, ghost.OnPathFound);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            ghost.ChangeState("Rage");
         }
     }
 }

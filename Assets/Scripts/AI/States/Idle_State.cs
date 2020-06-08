@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Idle_State : State
 {
-    public override void OnEnter(Base_Ghost ghost) { Debug.Log("Flee"); }
+    public override void OnEnter(Base_Ghost ghost) { }
 
     public override void OnExit(Base_Ghost ghost) { }
 

@@ -10,7 +10,7 @@ public class Blue_Ghost : Base_Ghost
         speed = 3;
         RageTime = 10;
         IdleTime = 10;
-        FleeTime = 4;
+        TaggedTime = 4;
 
         myStateDictionary.Add("Patrol", new Patrol_State());
         myStateDictionary.Add("Flee", new Flee_State());

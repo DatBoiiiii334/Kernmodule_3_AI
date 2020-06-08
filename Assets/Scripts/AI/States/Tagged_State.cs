@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Tagged_State : State
 {
-    private float localFleeTime;
+    private float localtaggedTime;
 
     public override void OnEnter(Base_Ghost ghost)
     {
-        Debug.Log("Tagged");
-        localFleeTime = ghost.FleeTime;
+        localtaggedTime = ghost.TaggedTime;
     }
 
     public override void OnExit(Base_Ghost ghost)
     {
-        localFleeTime = ghost.FleeTime;
+        localtaggedTime = ghost.TaggedTime;
         ghost.myHealth = 1;
         ghost.GotRescuedGhost = false;
         ghost.InFleeZone = false;
@@ -31,10 +30,10 @@ public class Tagged_State : State
         }
 
         if (ghost.InFleeZone == true) {
-            localFleeTime -= Time.deltaTime;
+            localtaggedTime -= Time.deltaTime;
         }
 
-        if (localFleeTime <= 0) {
+        if (localtaggedTime <= 0) {
             ghost.ChangeState("Patrol");
         }
     }

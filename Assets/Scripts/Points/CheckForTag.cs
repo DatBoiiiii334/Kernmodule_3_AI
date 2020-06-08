@@ -8,7 +8,7 @@ public class CheckForTag : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == TagName) {
+        if (other.tag == "wall") {
             gameObject.SetActive(false);
         }
     }

@@ -46,17 +46,12 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
         else if (score >= 10) {
             SceneManager.LoadScene("WinScreen");
         }
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            IsInRage = true;
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (IsInRage == true) {
             if (collision.collider.tag == "Ghost") {
-                Debug.Log(collision.collider.name + "Was hit by enraged ghost");
                 collision.collider.GetComponent<Idamagable>().GiveDamage(10);
             }
         }

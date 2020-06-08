@@ -13,7 +13,7 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
 
     public float RageTime { get; set; }
     public float IdleTime { get; set; }
-    public float FleeTime { get; set; }
+    public float TaggedTime { get; set; }
 
     public bool KillGhost { get; set; }
     public bool KillPlayer { get; set; }
@@ -36,7 +36,6 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
         }
 
         if (myHealth <= 0) {
-            Debug.Log(name + " Is DEAD");
             ChangeState("Tagged");
         }
 
@@ -70,7 +69,6 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
         }
 
         if (collision.collider.tag == "Ghost") {
-            Debug.Log("Boo");
             if (KillGhost == true) {
                 collision.collider.GetComponent<Idamagable>().GiveDamage(1);
             }
@@ -103,7 +101,6 @@ public class Base_Ghost : Unit, Idamagable, IRageble, IRescueAble
 
     public void GiveDamage(int damage)
     {
-        Debug.Log(name + "Has been hit");
         myHealth -= damage;
     }
 
