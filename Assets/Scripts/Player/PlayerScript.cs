@@ -50,11 +50,12 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsInRage == true) {
-            if (collision.collider.tag == "Ghost") {
-                collision.collider.GetComponent<Idamagable>().GiveDamage(10);
-            }
+        //if (IsInRage == true) {
+        if (collision.collider.tag == "Ghost") {
+            Debug.Log(collision.collider.name);
+            collision.collider.GetComponent<Idamagable>().GiveDamage(10);
         }
+        //}
     }
 
     void Idamagable.GiveDamage(int damage)
