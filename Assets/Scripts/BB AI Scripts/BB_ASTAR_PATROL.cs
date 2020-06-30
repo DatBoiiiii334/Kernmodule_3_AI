@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace BBUnity.Actions
 {
-    [Action("Navigation/A*_Patroling")]
+    [Action("Navigation/A*_Pathfinding")]
     [Help("Moves the game object to a given position by using a A* Pathfinding")]
-    public class BB_ASTAR_PATROL : GOAction, IRageble, Idamagable
+    public class BB_ASTAR_PATROL : GOAction
     {
-        [InParam("target4me")]
+        [InParam("path waypoint")]
         [Help("Your special selected number of worlds")]
         public GameObject target;
 
@@ -23,32 +23,15 @@ namespace BBUnity.Actions
         [Help("Enemy health")]
         public int health;
 
+        [InParam("Mono")]
+        [Help("Enemy health")]
+        public MonoHP _monoInstance;
+
         private Rigidbody myRigidbody;
         private Vector3[] path;
         private int targetIndex;
-        private bool SwitchToRage;
 
         public override void OnStart()
-        {
-            //_instance.DoIt(gameObject.transform.position, myNav.transform.position);
-
-        }
-
-        public override TaskStatus OnUpdate()
-        {
-
-            health = EnemyManager.health;
-            
-
-            if (SwitchToRage) {
-                //DoIt(gameObject.transform.position, player.transform.position);
-            }
-
-            DoIt(gameObject.transform.position, target.transform.position);
-            return TaskStatus.RUNNING;
-        }
-
-        public void Start()
         {
             myRigidbody = gameObject.GetComponent<Rigidbody>();
 
@@ -57,11 +40,16 @@ namespace BBUnity.Actions
             }
         }
 
+        public override TaskStatus OnUpdate()
+        {
+            DoIt(gameObject.transform.position, target.transform.position);
+            return TaskStatus.RUNNING;
+        }
+
         public void DoIt(Vector3 me, Vector3 target)
         {
             PathRequestManager.RequestPath(me, target, OnPathFound);
         }
-
 
         public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
         {
@@ -129,11 +117,6 @@ namespace BBUnity.Actions
         {
             health -= damage;
             Debug.Log("Stop hitting me!" + health);
-        }
-
-        public void Rage(bool startRaging)
-        {
-            SwitchToRage = startRaging;
         }
     }
 }

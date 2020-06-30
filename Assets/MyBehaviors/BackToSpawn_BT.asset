@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a7c8ca992f915438a96c2077353778, type: 3}
+  m_Name: BackToSpawn_BT
+  m_EditorClassIdentifier: 
+  brickName: Assets/MyBehaviors/BackToSpawn_BT.asset
+  xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
+    version=\"1.0\">\r\n  <BehaviorTree id=\"0\" />\r\n  <runtimeInfo>\r\n    <BehaviorTree
+    id=\"0\" guid=\"aeae041d27161c24590da192eacc6b16\" nextId=\"20\">\r\n      <root>\r\n
+    \       <RepeatDecorator id=\"4\" />\r\n      </root>\r\n      <inputParams>\r\n
+    \       <inputValues>\r\n          <entry name=\"pathWaypoint\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"False\" />\r\n          <entry name=\"myHealth\" type=\"System.Int32\"
+    isBlackboard=\"False\" value=\"5\" />\r\n          <entry name=\"mySpeed\" type=\"System.Single\"
+    isBlackboard=\"False\" value=\"5\" />\r\n          <entry name=\"Spawn\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"False\" />\r\n          <entry name=\"seconds\" type=\"System.Single\"
+    isBlackboard=\"False\" value=\"5\" />\r\n          <entry name=\"Player\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"False\" />\r\n          <entry name=\"closeDistancePlayer\" type=\"System.Single\"
+    isBlackboard=\"False\" value=\"0\" />\r\n          <entry name=\"DeathTimer\"
+    type=\"System.Single\" isBlackboard=\"False\" value=\"0\" />\r\n          <entry
+    name=\"Mono\" type=\"MonoHP\" isBlackboard=\"False\" />\r\n          <entry name=\"AgroSpeed\"
+    type=\"System.Single\" isBlackboard=\"False\" value=\"6\" />\r\n        </inputValues>\r\n
+    \     </inputParams>\r\n      <outputParams>\r\n        <outputValues>\r\n          <entry
+    name=\"NewHp\" type=\"System.Int32\" isBlackboard=\"True\" />\r\n        </outputValues>\r\n
+    \     </outputParams>\r\n      <localParams />\r\n    </BehaviorTree>\r\n    <RepeatDecorator
+    id=\"4\" loops=\"-1\" policy=\"ContinueWhenChildFails\">\r\n      <child>\r\n
+    \       <PrioritySelectorNode id=\"15\" />\r\n      </child>\r\n      <inputParams
+    />\r\n      <outputParams />\r\n      <localParams />\r\n    </RepeatDecorator>\r\n
+    \   <PrioritySelectorNode id=\"15\">\r\n      <children>\r\n        <elem>\r\n
+    \         <GuardAndNode>\r\n            <guard>\r\n              <ConditionEvalNode
+    id=\"17\" />\r\n            </guard>\r\n            <child>\r\n              <ActionNode
+    id=\"16\" />\r\n            </child>\r\n          </GuardAndNode>\r\n        </elem>\r\n
+    \       <elem>\r\n          <GuardAndNode>\r\n            <guard>\r\n              <ConditionEvalNode
+    id=\"19\" />\r\n            </guard>\r\n            <child>\r\n              <SubbehaviorNode
+    id=\"18\" />\r\n            </child>\r\n          </GuardAndNode>\r\n        </elem>\r\n
+    \     </children>\r\n      <inputParams />\r\n      <outputParams />\r\n      <localParams
+    />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"17\" policy=\"ATOMIC_CHECK\"
+    name=\"Basic/NoHealth\">\r\n      <inputParams>\r\n        <inputValues>\r\n          <entry
+    name=\"health\" type=\"System.Int32\" isBlackboard=\"False\" value=\"0\" />\r\n
+    \         <entry name=\"EnemyMono\" type=\"MonoHP\" isBlackboard=\"False\" />\r\n
+    \       </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n      <localParams
+    />\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"16\" action=\"Navigation/A*_Pathfinding\">\r\n
+    \     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"path waypoint\"
+    type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"Spawn\" />\r\n
+    \         <entry name=\"mySpeed\" type=\"System.Single\" isBlackboard=\"True\"
+    blackboard=\"AgroSpeed\" />\r\n          <entry name=\"health\" type=\"System.Int32\"
+    isBlackboard=\"True\" blackboard=\"myHealth\" />\r\n          <entry name=\"Mono\"
+    type=\"MonoHP\" isBlackboard=\"True\" blackboard=\"Mono\" />\r\n        </inputValues>\r\n
+    \     </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n
+    \   <ConditionEvalNode id=\"19\" policy=\"ATOMIC_CHECK\" name=\"AlwaysTrue\">\r\n
+    \     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n
+    \   <SubbehaviorNode id=\"18\">\r\n      <_guid>933005ef4f5b2874cae0b41816af6798</_guid>\r\n
+    \     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"Spawn\"
+    type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"Spawn\" />\r\n
+    \         <entry name=\"mySpeed\" type=\"System.Single\" isBlackboard=\"True\"
+    blackboard=\"mySpeed\" />\r\n          <entry name=\"myHealth\" type=\"System.Int32\"
+    isBlackboard=\"True\" blackboard=\"myHealth\" />\r\n          <entry name=\"pathWaypoint\"
+    type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"pathWaypoint\"
+    />\r\n          <entry name=\"Player\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
+    blackboard=\"Player\" />\r\n          <entry name=\"closeDistancePlayer\" type=\"System.Single\"
+    isBlackboard=\"True\" blackboard=\"closeDistancePlayer\" />\r\n          <entry
+    name=\"DeathTimer\" type=\"System.Single\" isBlackboard=\"True\" blackboard=\"DeathTimer\"
+    />\r\n          <entry name=\"Mono\" type=\"MonoHP\" isBlackboard=\"True\" blackboard=\"Mono\"
+    />\r\n          <entry name=\"AgroSpeed\" type=\"System.Single\" isBlackboard=\"True\"
+    blackboard=\"AgroSpeed\" />\r\n        </inputValues>\r\n      </inputParams>\r\n
+    \     <outputParams />\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n
+    \ </runtimeInfo>\r\n  <editorInfo>\r\n    <BehaviorTree id=\"0\" _name=\"BackToSpawn_BT\"
+    _description=\"\" _removeIfClosed=\"False\">\r\n      <_rootList>\r\n        <elem>\r\n
+    \         <RepeatDecorator id=\"4\" />\r\n        </elem>\r\n        <elem>\r\n
+    \         <PrioritySelectorNode id=\"15\" />\r\n        </elem>\r\n        <elem>\r\n
+    \         <ActionNode id=\"16\" />\r\n        </elem>\r\n        <elem>\r\n          <ConditionEvalNode
+    id=\"17\" />\r\n        </elem>\r\n        <elem>\r\n          <SubbehaviorNode
+    id=\"18\" />\r\n        </elem>\r\n        <elem>\r\n          <ConditionEvalNode
+    id=\"19\" />\r\n        </elem>\r\n      </_rootList>\r\n      <_nodes>\r\n        <nodes>\r\n
+    \         <RepeatDecorator id=\"4\" />\r\n          <ActionNode id=\"16\" />\r\n
+    \         <SubbehaviorNode id=\"18\" />\r\n          <PrioritySelectorNode id=\"15\"
+    />\r\n          <ConditionEvalNode id=\"17\" />\r\n          <ConditionEvalNode
+    id=\"19\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n
+    \   <RepeatDecorator id=\"4\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"482.5001 131.2499\" name=\"Repeat\" description=\"Repeats
+    the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree
+    id=\"0\" />\r\n          <RepeatDecorator id=\"4\" />\r\n        </data>\r\n      </_data>\r\n
+    \   </RepeatDecorator>\r\n    <PrioritySelectorNode id=\"15\">\r\n      <_data>\r\n
+    \       <data breakpoint=\"0\" selected=\"False\" position=\"423.3333 275.0003\"
+    name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\r\n
+    \         <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode id=\"15\"
+    />\r\n          <RepeatDecorator id=\"4\" />\r\n        </data>\r\n      </_data>\r\n
+    \   </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"17\">\r\n      <_data>\r\n
+    \       <data breakpoint=\"0\" selected=\"False\" position=\"518.8884 719.9996\"
+    name=\"Basic/NoHealth\" description=\"Eval\" cardinality=\"1\" hasParent=\"False\">\r\n
+    \         <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"17\"
+    />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode
+    id=\"16\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"286.6667 420.0001\" name=\"Navigation/A*_Pathfinding\" description=\"Moves
+    the game object to a given position by using a A* Pathfinding\" cardinality=\"0\"
+    hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
+    id=\"16\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode
+    id=\"19\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"886.1108 726.666\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
+    hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
+    id=\"19\" />\r\n          <PrioritySelectorNode id=\"15\" />\r\n        </data>\r\n
+    \     </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"18\">\r\n
+    \     <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"524.9998
+    413.3336\" name=\"Patrol_BT\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n
+    \         <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode id=\"18\" />\r\n
+    \       </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
+  zoom: 0.6
+  subslist:
+  - {fileID: 11400000, guid: 933005ef4f5b2874cae0b41816af6798, type: 2}
+  _guid: aeae041d27161c24590da192eacc6b16

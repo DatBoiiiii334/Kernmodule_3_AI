@@ -5,15 +5,11 @@ using UnityEngine;
 
 namespace BBUnity.Conditions
 {
-    /// <summary>
-    /// It is a perception condition to check if the objective is close depending on a given distance.
-    /// </summary>
-    [Condition("Perception/EnemyHealth")]
-    [Help("Checks if the gameObject needs healing")]
-    public class EnemyHealth : GOCondition
+    [Condition("Basic/NoHealth")]
+    [Help("Checks whether the game object has 0 or lower health")]
+    public class NoHealth : GOCondition
     {
         [InParam("health")]
-        [Help("this is my current health")]
         public int health;
         [InParam("EnemyMono")]
         public MonoHP _instance;
@@ -21,10 +17,10 @@ namespace BBUnity.Conditions
         public override bool Check()
         {
             health = _instance.health;
-            if(health <= 0) {
+            if (health <= 0) {
                 return true;
             }
-            else{
+            else {
                 return false;
             }
         }
