@@ -5,9 +5,6 @@ using UnityEngine;
 
 namespace BBUnity.Conditions
 {
-    /// <summary>
-    /// It is a perception condition to check if the objective is close depending on a given distance.
-    /// </summary>
     [Condition("Perception/EnemyHealth")]
     [Help("Checks if the gameObject needs healing")]
     public class EnemyHealth : GOCondition

@@ -1,51 +1,64 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Pada1.BBCore.Tasks;
-using Pada1.BBCore;
+﻿using Pada1.BBCore;           // Code attributes
+using Pada1.BBCore.Tasks;     // TaskStatus
+using Pada1.BBCore.Framework;
 using UnityEngine;
-
 
 namespace BBUnity.Actions
 {
-    [Action("Navigation/A*_Pathfinding")]
-    [Help("Moves the game object to a given position by using a A* Pathfinding")]
-    public class BB_ASTAR_PATROL : GOAction
+    [Action("New Actions/SearchItem")]
+    [Help("Look for an item in the map")]
+    public class SearchItem : GOAction
     {
-        [InParam("path waypoint")]
-        [Help("Your special selected number of worlds")]
-        public GameObject target;
 
-        [InParam("mySpeed")]
-        [Help("Your speed")]
-        public float speed;
+        [InParam("searchObjectName")]
+        public string searchObjectName;
+
+        //[InParam("target")]
+        //public GameObject mytarget;
 
         [InParam("health")]
-        [Help("Enemy health")]
-        public int health;
+        public int myHealth;
 
-        [InParam("Mono")]
-        [Help("Enemy health")]
-        public MonoHP _monoInstance;
+        [InParam("speed")]
+        public float speed;
 
+        public GameObject[] allHealingItems;
+
+        public GameObject mytarget;
         private Rigidbody myRigidbody;
         private Vector3[] path;
         private int targetIndex;
 
-        public override void OnStart()
-        {
-            myRigidbody = gameObject.GetComponent<Rigidbody>();
-
-            if (myRigidbody == null) {
-                Debug.LogError("PLEASE ADD RIGIDBODY COMPONENT TO UNIT !!!!");
-            }
-        }
+        private float minDist = Mathf.Infinity;
 
         public override TaskStatus OnUpdate()
         {
-            OnStart();
-            DoIt(gameObject.transform.position, target.transform.position);
+
+            if (allHealingItems == null) {
+                allHealingItems = GameObject.FindGameObjectsWithTag(searchObjectName);
+            }
+
+            foreach (GameObject medicine in allHealingItems) {
+
+                float dist = Vector3.Distance(medicine.transform.position, gameObject.transform.position);
+                if (dist < minDist) {
+                    mytarget = medicine;
+                    minDist = dist;
+                }
+            }
+
+            if (mytarget == null) {
+                return TaskStatus.FAILED;
+            }
+            else if(!mytarget.activeInHierarchy) {
+                return TaskStatus.FAILED;
+            }
+
+            DoIt(gameObject.transform.position, mytarget.transform.position);
             return TaskStatus.RUNNING;
         }
+
+       
 
         public void DoIt(Vector3 me, Vector3 target)
         {
@@ -111,12 +124,5 @@ namespace BBUnity.Actions
                 }
             }
         }
-
-        public void GiveDamage(int damage)
-        {
-            health -= damage;
-            Debug.Log("Stop hitting me!" + health);
-        }
     }
 }
-

@@ -25,7 +25,7 @@ public class BB_WayPointSpawner : MonoBehaviour
         groundSize = ground.GetComponent<Renderer>();
 
         if (groundSize == null) {
-            Debug.LogError("NO RENDERER FOUND IN GHOST!!!!");
+            Debug.LogError("NO RENDERER FOUND IN GROUND!!!!");
         }
         minX = (groundSize.bounds.center.x - groundSize.bounds.extents.x);
         maxX = (groundSize.bounds.center.x + groundSize.bounds.extents.x);
@@ -49,7 +49,6 @@ public class BB_WayPointSpawner : MonoBehaviour
         NewPos.x = Random.Range(minX, maxX);
         NewPos.z = Random.Range(minZ, maxZ);
         NewPos.y = gameObject.transform.position.y;
-        //Debug.Log("Changing pos");
         ObjectToSpawn.SetActive(true);
         ObjectToSpawn.transform.position = NewPos;
     }

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerScript : PlayerMovement, Idamagable, IRageble
+public class PlayerScript : PlayerMovement, Idamagable, IRageble, IGiveHp
 {
     private float OldRageTime;
     private bool IsInRage;
@@ -11,7 +11,7 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
     public Text ScoreText;
     public Text LivesText;
 
-    public int HP;
+    public int health;
     public int score;
     public float RageTime;
 
@@ -25,7 +25,7 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
     void Update()
     {
         ScoreText.text = "Score: " + score.ToString();
-        LivesText.text = "Lives: " + HP.ToString();
+        LivesText.text = "Lives: " + health.ToString();
 
         if (IsInRage == true) {
             RageTime -= Time.deltaTime;
@@ -40,7 +40,7 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
             RageTime = OldRageTime;
         }
 
-        if (HP <= 0) {
+        if (health <= 0) {
             SceneManager.LoadScene("LoseScreen");
         }
         else if (score >= 10) {
@@ -51,17 +51,17 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
     private void OnCollisionEnter(Collision collision)
     {
         //if (IsInRage == true) {
-        //if (collision.collider.tag == "Ghost") {
-        //    //Debug.Log(collision.collider.name);
-        //    collision.collider.GetComponent<Idamagable>().GiveDamage(10);
-        //}
+        if (collision.collider.tag == "Ghost") {
+            //Debug.Log(collision.collider.name);
+            collision.collider.GetComponent<Idamagable>().GiveDamage(10);
+        }
         //}
     }
 
     void Idamagable.GiveDamage(int damage)
     {
         if (IsInRage == false) {
-            HP -= damage;
+            health -= damage;
         }
     }
 
@@ -69,5 +69,10 @@ public class PlayerScript : PlayerMovement, Idamagable, IRageble
     {
         IsInRage = startRaging;
         score = score + 1;
+    }
+
+    public void GiveHealth(int hp)
+    {
+        health += hp;
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonoHP : MonoBehaviour, Idamagable, IRageble
+public class MonoHP : MonoBehaviour, Idamagable, IRageble, IGiveHp
 {
     public int health;
     public bool IsRaging;
@@ -10,12 +10,15 @@ public class MonoHP : MonoBehaviour, Idamagable, IRageble
     public float RageTimer;
     public float DeathTimer;
     public string[] targetName;
-    
 
+
+    private bool InSpawn;
+    private float OldHealt;
     private float OldRageTimer;
 
     void Start()
     {
+        OldHealt = health;
         OldRageTimer = RageTimer;
     }
 
@@ -28,32 +31,51 @@ public class MonoHP : MonoBehaviour, Idamagable, IRageble
             IsRaging = false;
             RageTimer = OldRageTimer;
         }
+
+        if (InSpawn) {
+            if (health < OldHealt) {
+                health += 1 ;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        foreach(string _target in targetName) {
-            if (collision.collider.tag == _target) {
-                collision.collider.GetComponent<Idamagable>().GiveDamage(damageToGive);
+        if(health > 0) {
+            foreach (string _target in targetName) {
+                if (collision.collider.tag == _target) {
+                    collision.collider.GetComponent<Idamagable>().GiveDamage(damageToGive);
+                }
             }
         }
+    }
 
-        if (health <= 0) {
-            if (collision.collider.tag == "Spawn") {
-                
-            }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Spawn") {
+            InSpawn = true;
+        }
+        else {
+            InSpawn = false;
         }
     }
 
     public void GiveDamage(int damage)
     {
         if(IsRaging == false) {
-            health -= damage;
+            if(health > 0) {
+                health -= damage;
+            } 
         }
     }
 
     public void Rage(bool startRaging)
     {
         IsRaging = startRaging;
+    }
+
+    public void GiveHealth(int hp)
+    {
+        health += hp;
     }
 }
