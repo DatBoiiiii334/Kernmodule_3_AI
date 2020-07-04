@@ -5,7 +5,7 @@ public class UI_Buttons : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("BehaviourTree");
     }
 
     public void Menu()

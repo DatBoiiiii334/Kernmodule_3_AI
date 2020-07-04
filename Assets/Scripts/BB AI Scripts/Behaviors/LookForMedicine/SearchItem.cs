@@ -13,11 +13,16 @@ namespace BBUnity.Actions
         [InParam("searchObjectName")]
         public string searchObjectName;
 
+<<<<<<< Updated upstream
         //[InParam("target")]
         //public GameObject mytarget;
 
         [InParam("health")]
         public int myHealth;
+=======
+        [InParam("health")]
+        public float myHealth;
+>>>>>>> Stashed changes
 
         [InParam("speed")]
         public float speed;
@@ -58,8 +63,11 @@ namespace BBUnity.Actions
             return TaskStatus.RUNNING;
         }
 
+<<<<<<< Updated upstream
        
 
+=======
+>>>>>>> Stashed changes
         public void DoIt(Vector3 me, Vector3 target)
         {
             PathRequestManager.RequestPath(me, target, OnPathFound);

@@ -40,7 +40,11 @@ MonoBehaviour:
     id=\"19\" />\r\n            </guard>\r\n            <child>\r\n              <SubbehaviorNode
     id=\"18\" />\r\n            </child>\r\n          </GuardAndNode>\r\n        </elem>\r\n
     \     </children>\r\n      <inputParams />\r\n      <outputParams />\r\n      <localParams
+<<<<<<< Updated upstream
     />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"17\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
+=======
+    />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"17\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
+>>>>>>> Stashed changes
     name=\"Perception/EnemyHealth\">\r\n      <inputParams>\r\n        <inputValues>\r\n
     \         <entry name=\"health\" type=\"System.Int32\" isBlackboard=\"True\" blackboard=\"health\"
     />\r\n          <entry name=\"EnemyMono\" type=\"MonoHP\" isBlackboard=\"True\"
@@ -84,31 +88,55 @@ MonoBehaviour:
     />\r\n          <ConditionEvalNode id=\"17\" />\r\n          <ConditionEvalNode
     id=\"19\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n
     \   <RepeatDecorator id=\"4\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+<<<<<<< Updated upstream
     selected=\"False\" position=\"482.5001 131.2499\" name=\"Repeat\" description=\"Repeats
     the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <RepeatDecorator id=\"4\" />\r\n        </data>\r\n      </_data>\r\n
     \   </RepeatDecorator>\r\n    <PrioritySelectorNode id=\"15\">\r\n      <_data>\r\n
     \       <data breakpoint=\"0\" selected=\"False\" position=\"423.3333 275.0003\"
+=======
+    selected=\"False\" position=\"658.2146 22.67847\" name=\"Repeat\" description=\"Repeats
+    the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree
+    id=\"0\" />\r\n          <RepeatDecorator id=\"4\" />\r\n        </data>\r\n      </_data>\r\n
+    \   </RepeatDecorator>\r\n    <PrioritySelectorNode id=\"15\">\r\n      <_data>\r\n
+    \       <data breakpoint=\"0\" selected=\"False\" position=\"599.0477 166.4289\"
+>>>>>>> Stashed changes
     name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\r\n
     \         <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode id=\"15\"
     />\r\n          <RepeatDecorator id=\"4\" />\r\n        </data>\r\n      </_data>\r\n
     \   </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"17\">\r\n      <_data>\r\n
+<<<<<<< Updated upstream
     \       <data breakpoint=\"0\" selected=\"False\" position=\"518.8884 719.9996\"
+=======
+    \       <data breakpoint=\"0\" selected=\"True\" position=\"738.889 612.8565\"
+>>>>>>> Stashed changes
     name=\"Perception/EnemyHealth\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n
     \         <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"17\"
     />\r\n          <PrioritySelectorNode id=\"15\" />\r\n        </data>\r\n      </_data>\r\n
     \   </ConditionEvalNode>\r\n    <ActionNode id=\"16\">\r\n      <_data>\r\n        <data
+<<<<<<< Updated upstream
     breakpoint=\"0\" selected=\"True\" position=\"286.6667 420.0001\" name=\"Navigation/A*_Pathfinding\"
+=======
+    breakpoint=\"0\" selected=\"False\" position=\"506.666 312.8574\" name=\"Navigation/A*_Pathfinding\"
+>>>>>>> Stashed changes
     description=\"Moves the game object to a given position by using a A* Pathfinding\"
     cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n
     \         <ActionNode id=\"16\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n
     \   <ConditionEvalNode id=\"19\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+<<<<<<< Updated upstream
     selected=\"False\" position=\"886.1108 726.666\" name=\"AlwaysTrue\" description=\"Eval\"
+=======
+    selected=\"False\" position=\"1103.255 626.6659\" name=\"AlwaysTrue\" description=\"Eval\"
+>>>>>>> Stashed changes
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n
     \         <ConditionEvalNode id=\"19\" />\r\n          <PrioritySelectorNode id=\"15\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"18\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+<<<<<<< Updated upstream
     position=\"524.9998 413.3336\" name=\"Patrol_BT\" description=\"\" cardinality=\"-1\"
+=======
+    position=\"742.1431 313.3336\" name=\"Patrol_BT\" description=\"\" cardinality=\"-1\"
+>>>>>>> Stashed changes
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
     id=\"18\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n
     \ </editorInfo>\r\n</BehaviorBricks>"

@@ -50,9 +50,15 @@ MonoBehaviour:
     id=\"13\" />\r\n            </guard>\r\n            <child>\r\n              <ActionNode
     id=\"12\" />\r\n            </child>\r\n          </GuardAndNode>\r\n        </elem>\r\n
     \     </children>\r\n      <inputParams />\r\n      <outputParams />\r\n      <localParams
+<<<<<<< Updated upstream
     />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"20\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
     name=\"Perception/EnemyHealth\">\r\n      <inputParams>\r\n        <inputValues>\r\n
     \         <entry name=\"health\" type=\"System.Int32\" isBlackboard=\"True\" blackboard=\"health\"
+=======
+    />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"20\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
+    name=\"Perception/EnemyHealth\">\r\n      <inputParams>\r\n        <inputValues>\r\n
+    \         <entry name=\"health\" type=\"System.Int32\" isBlackboard=\"True\" blackboard=\"mySpeed\"
+>>>>>>> Stashed changes
     />\r\n          <entry name=\"EnemyMono\" type=\"MonoHP\" isBlackboard=\"True\"
     blackboard=\"Mono\" />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams
     />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
@@ -76,9 +82,16 @@ MonoBehaviour:
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"velocity\" />\r\n          <entry
     name=\"turnSpeed\" type=\"System.Single\" isBlackboard=\"False\" value=\"0\" />\r\n
     \         <entry name=\"layerMask\" type=\"UnityEngine.LayerMask\" isBlackboard=\"False\"
+<<<<<<< Updated upstream
     />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n
     \     <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"11\"
     policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetCloseAndInSight\">\r\n
+=======
+    />\r\n          <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\"
+    value=\"0\" />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams
+    />\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
+    id=\"11\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetCloseAndInSight\">\r\n
+>>>>>>> Stashed changes
     \     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"target\"
     type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"target\" />\r\n
     \         <entry name=\"angle\" type=\"System.Single\" isBlackboard=\"True\" blackboard=\"angle\"
@@ -101,13 +114,21 @@ MonoBehaviour:
     name=\"layerMask\" type=\"UnityEngine.LayerMask\" isBlackboard=\"True\" blackboard=\"layerMask\"
     />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n
     \     <localParams />\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"13\"
+<<<<<<< Updated upstream
     policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n      <inputParams
+=======
+    policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n      <inputParams
+>>>>>>> Stashed changes
     />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n
     \   <ActionNode id=\"12\" action=\"Navigation/A*_Pathfinding\">\r\n      <inputParams>\r\n
     \       <inputValues>\r\n          <entry name=\"path waypoint\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"pathWaypoint\" />\r\n          <entry name=\"mySpeed\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"mySpeed\" />\r\n          <entry
+<<<<<<< Updated upstream
     name=\"health\" type=\"System.Int32\" isBlackboard=\"True\" blackboard=\"health\"
+=======
+    name=\"health\" type=\"System.Int32\" isBlackboard=\"True\" blackboard=\"mySpeed\"
+>>>>>>> Stashed changes
     />\r\n          <entry name=\"Mono\" type=\"MonoHP\" isBlackboard=\"True\" blackboard=\"Mono\"
     />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n
     \     <localParams />\r\n    </ActionNode>\r\n  </runtimeInfo>\r\n  <editorInfo>\r\n
@@ -126,16 +147,25 @@ MonoBehaviour:
     id=\"10\" />\r\n          <ConditionEvalNode id=\"11\" />\r\n          <SubbehaviorNode
     id=\"19\" />\r\n          <ConditionEvalNode id=\"20\" />\r\n        </nodes>\r\n
     \     </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"1\">\r\n      <_data>\r\n
+<<<<<<< Updated upstream
     \       <data breakpoint=\"0\" selected=\"False\" position=\"710.2873 133.1905\"
+=======
+    \       <data breakpoint=\"0\" selected=\"False\" position=\"727.6836 16.85718\"
+>>>>>>> Stashed changes
     name=\"Repeat\" description=\"Repeats the execution of its child node\" cardinality=\"1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator
     id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n
     \   <PrioritySelectorNode id=\"2\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+<<<<<<< Updated upstream
     selected=\"False\" position=\"652.2872 266.1908\" name=\"Priority Selector\" description=\"\"
+=======
+    selected=\"False\" position=\"651.3506 143.1908\" name=\"Priority Selector\" description=\"\"
+>>>>>>> Stashed changes
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n
     \         <PrioritySelectorNode id=\"2\" />\r\n          <RepeatDecorator id=\"1\"
     />\r\n        </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
     id=\"20\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+<<<<<<< Updated upstream
     position=\"355.7083 560.6301\" name=\"Perception/EnemyHealth\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n
     \         <ConditionEvalNode id=\"20\" />\r\n          <PrioritySelectorNode id=\"2\"
@@ -146,25 +176,53 @@ MonoBehaviour:
     id=\"19\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n
     \   <ConditionEvalNode id=\"11\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
     selected=\"False\" position=\"1005.188 765.4316\" name=\"Perception/IsTargetCloseAndInSight\"
+=======
+    position=\"339.7715 455.9637\" name=\"Perception/EnemyHealth\" description=\"Eval\"
+    cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n
+    \         <ConditionEvalNode id=\"20\" />\r\n          <PrioritySelectorNode id=\"2\"
+    />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
+    id=\"19\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
+    position=\"307.9334 350.6574\" name=\"LookForMedicine_BT\" description=\"\" cardinality=\"-1\"
+    hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
+    id=\"19\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n
+    \   <ConditionEvalNode id=\"11\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"984.2507 660.7652\" name=\"Perception/IsTargetCloseAndInSight\"
+>>>>>>> Stashed changes
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"11\" />\r\n          <PrioritySelectorNode
     id=\"2\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n
     \   <ActionNode id=\"10\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+<<<<<<< Updated upstream
     selected=\"False\" position=\"595.1898 456.544\" name=\"New Actions/Overwatch\"
+=======
+    selected=\"False\" position=\"574.2526 351.8772\" name=\"New Actions/Overwatch\"
+>>>>>>> Stashed changes
     description=\"Shoots hostiles on sight\" cardinality=\"0\" hasParent=\"False\">\r\n
     \         <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"10\" />\r\n
     \       </data>\r\n      </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode
     id=\"13\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+<<<<<<< Updated upstream
     position=\"1382.73 755.6689\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"13\" />\r\n          <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n
     \     </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"12\">\r\n      <_data>\r\n
     \       <data breakpoint=\"0\" selected=\"False\" position=\"909.396 454.56\"
+=======
+    position=\"1406.792 644.3342\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
+    hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
+    id=\"13\" />\r\n          <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n
+    \     </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"12\">\r\n      <_data>\r\n
+    \       <data breakpoint=\"0\" selected=\"False\" position=\"933.4594 343.2269\"
+>>>>>>> Stashed changes
     name=\"Navigation/A*_Pathfinding\" description=\"Moves the game object to a given
     position by using a A* Pathfinding\" cardinality=\"0\" hasParent=\"False\">\r\n
     \         <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"12\" />\r\n
     \       </data>\r\n      </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
+<<<<<<< Updated upstream
   zoom: 0.7
+=======
+  zoom: 0.6
+>>>>>>> Stashed changes
   subslist:
   - {fileID: 11400000, guid: 933005ef4f5b2874cae0b41816af6798, type: 2}
   - {fileID: 11400000, guid: 69d8f943d83c7644089e2e40716856a0, type: 2}

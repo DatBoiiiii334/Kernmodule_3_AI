@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class MonoHP : MonoBehaviour, Idamagable, IRageble, IGiveHp
 {
+<<<<<<< Updated upstream
     public int health;
+=======
+    public float health;
+>>>>>>> Stashed changes
     public bool IsRaging;
     public int damageToGive;
     public float RageTimer;
@@ -34,7 +38,11 @@ public class MonoHP : MonoBehaviour, Idamagable, IRageble, IGiveHp
 
         if (InSpawn) {
             if (health < OldHealt) {
+<<<<<<< Updated upstream
                 health += 1 ;
+=======
+                health += 1 * Time.deltaTime;
+>>>>>>> Stashed changes
             }
         }
     }

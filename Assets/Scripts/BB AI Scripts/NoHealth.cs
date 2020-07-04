@@ -10,7 +10,11 @@ namespace BBUnity.Conditions
     public class NoHealth : GOCondition
     {
         [InParam("health")]
+<<<<<<< Updated upstream
         public int health;
+=======
+        public float health;
+>>>>>>> Stashed changes
         [InParam("EnemyMono")]
         public MonoHP _instance;
 

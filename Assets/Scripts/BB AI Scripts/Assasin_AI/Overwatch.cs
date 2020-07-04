@@ -21,6 +21,7 @@ namespace BBUnity.Actions
         [InParam("target")]
         public GameObject target;
 
+<<<<<<< Updated upstream
         [InParam("closeDistance")]
         public float closeDistance;
 
@@ -31,6 +32,17 @@ namespace BBUnity.Actions
         private float FireRate;
 
 
+=======
+        [InParam("closeDistance", DefaultValue = 10.0f)]
+        public float closeDistance;
+
+        [InParam("turnSpeed", DefaultValue = 7.0f)]
+        [Help("turnSpeed to face target")]
+        public float turnSpeed;
+
+        private float FireRate;
+
+>>>>>>> Stashed changes
         [InParam("layerMask")]
         public LayerMask layerMask;
         private Quaternion targetRotation;
@@ -48,6 +60,7 @@ namespace BBUnity.Actions
             RaycastHit hit;
             if (Physics.Raycast(gameObject.transform.position, shootPoint.forward, out hit, Mathf.Infinity, layerMask)) {
                 if (hit.collider.tag == "Player") {
+<<<<<<< Updated upstream
 
                     FireBullet();
 
@@ -60,11 +73,26 @@ namespace BBUnity.Actions
             }
 
             return TaskStatus.FAILED;
+=======
+                    FireBullet();
+                    return TaskStatus.RUNNING;
+                }
+                else {
+                    return TaskStatus.COMPLETED;
+                }
+            }
+            return TaskStatus.RUNNING;
+>>>>>>> Stashed changes
         }
 
         void FireBullet()
         {
+<<<<<<< Updated upstream
             GameObject newBullet = GameObject.Instantiate(bullet, shootPoint.position, shootPoint.rotation * bullet.transform.rotation);
+=======
+            Vector3 newpoint = new Vector3(shootPoint.position.x, shootPoint.position.y, shootPoint.position.z - 0.5f);
+            GameObject newBullet = GameObject.Instantiate(bullet, newpoint, shootPoint.rotation * bullet.transform.rotation);
+>>>>>>> Stashed changes
             if (newBullet.GetComponent<Rigidbody>() == null) {
                 newBullet.AddComponent<Rigidbody>();
             }

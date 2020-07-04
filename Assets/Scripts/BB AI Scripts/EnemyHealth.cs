@@ -11,7 +11,11 @@ namespace BBUnity.Conditions
     {
         [InParam("health")]
         [Help("this is my current health")]
+<<<<<<< Updated upstream
         public int health;
+=======
+        public float health;
+>>>>>>> Stashed changes
         [InParam("EnemyMono")]
         public MonoHP _instance;
 

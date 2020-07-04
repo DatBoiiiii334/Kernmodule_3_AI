@@ -21,7 +21,11 @@ namespace BBUnity.Actions
 
         [InParam("health")]
         [Help("Enemy health")]
+<<<<<<< Updated upstream
         public int health;
+=======
+        public float health;
+>>>>>>> Stashed changes
 
         [InParam("Mono")]
         [Help("Enemy health")]

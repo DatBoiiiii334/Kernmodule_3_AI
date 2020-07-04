@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class RageFruit : MonoBehaviour
 {
+    public string[] mytags;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player" || collision.collider.tag == "Ghost") {
-            collision.collider.GetComponent<IRageble>().Rage(true);
+        foreach (string tag in mytags) {
+            if (collision.collider.tag == tag) {
+                collision.collider.GetComponent<IRageble>().Rage(true);
+                transform.gameObject.SetActive(false);
+            }
+        }
+
+        if (collision.collider.tag == "wall") {
             transform.gameObject.SetActive(false);
         }
     }

@@ -49,7 +49,11 @@ public class BB_WayPointSpawner : MonoBehaviour
         NewPos.x = Random.Range(minX, maxX);
         NewPos.z = Random.Range(minZ, maxZ);
         NewPos.y = gameObject.transform.position.y;
+<<<<<<< Updated upstream
         ObjectToSpawn.SetActive(true);
+=======
+        ObjectToSpawn.SetActive(true); // In het geval dat hij inactive is gemaakt 
+>>>>>>> Stashed changes
         ObjectToSpawn.transform.position = NewPos;
     }
 }
